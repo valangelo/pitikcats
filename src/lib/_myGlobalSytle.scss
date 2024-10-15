@@ -1,0 +1,86 @@
+
+
+
+/* MY CUSTOM RESET */
+*,
+*::before,
+*::after {
+    color: var(--clr-font-200);
+    box-sizing: border-box;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+/* min body height */
+/* dark mode user-agent-styles */
+/* improves punctuation in supported browsers */
+html {
+    hanging-punctuation: first last;
+    // color-scheme:;
+    
+}
+// for people with vestibular disorders (animation can cause them discomfort)
+@media (prefers-reduced-motion: no-preference) {
+    html,
+    :has(:target) {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Improved heading in supported browsers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* improve readability with max-width on paragraphs and lists */
+/* prevent orphans in supported browsers */
+p {
+    // max-width: 75ch;
+    text-wrap: pretty;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+image{
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+body {
+    background-image: url(/src/assets/images/seamless_paper_texture.png);
+    // Mobile-specific styles
+    @media (max-width: var(--mobile-max)) {}
+
+    // Tablet-specific styles
+    @media (min-width: var(--tablet)) and (max-width: var(--desktop)) {}
+
+    // Desktop-specific styles
+    @media (min-width: var(--desktop)) and (max-width: var(--large-desktop)) {}
+
+    // Large desktop-specific styles
+    @media (min-width: var(--large-desktop)) {}
+}
+
+
+html,body{
+    min-width:400px;
+
+}

@@ -1,0 +1,8 @@
+@mixin doodle-styles {
+    border-radius: 10px;
+    border-image: url("/src/assets/images/design/border.svg") 10 stretch;
+    border-style: solid;
+    border-width: 10px;
+    // box-shadow: $shadow-large;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.08);
+}
