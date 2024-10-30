@@ -3,8 +3,7 @@
   import { fade } from 'svelte/transition';
   import { paths } from "$lib/index";
 
-  export let src:string;
-  // export let filename: string;
+  export let filename: string;
   export let alt: string;
 
 // /src/assets/styles/
@@ -43,10 +42,9 @@
     filter: grayscale(0%) sepia(0%);
   }
 </style>
-<!-- src={`${paths.gallery}${filename}`} -->
 
 <img
-  src={`${src}`}
+  src={`${paths.gallery}${filename}`}
   alt={alt}
   class:loaded={loaded}
   on:load={onLoad}
