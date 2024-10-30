@@ -3,6 +3,8 @@
     // import "../assets/styles/main.scss"; 
     import PitikcatsGallery from '$lib/pitikGallery.svelte';
     import {paths,designImages} from '$lib/index';
+
+ 
 </script>
 
 <svelte:head>
@@ -12,6 +14,7 @@
     <link rel="icon" href={designImages.logo} />
 </svelte:head>
   <main>
+ 
     <div class="header">
       <img src={designImages.logo}    alt="Pitik Elliot logo" />
 
@@ -80,7 +83,3 @@
     }
   </style>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NG98395"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
