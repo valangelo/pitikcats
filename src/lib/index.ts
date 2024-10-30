@@ -1,8 +1,9 @@
+const isDev = import.meta.env.MODE === 'development'; // Check if in development mode
 
 export const paths = {
-    styles: '/src/assets/styles/',
-    design: '/src/assets/images/design/',
-    gallery: '/src/assets/images/gallery/'
+    styles: isDev ? '/src/assets/styles/' : './assets/styles/',
+    design: isDev ? '/src/assets/images/design/' : './assets/images/design/',
+    gallery: isDev ? '/src/assets/images/gallery/' : './assets/images/gallery/'
 };
 
 export const designImages = {

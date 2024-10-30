@@ -1,4 +1,5 @@
 <script lang="ts">
+  // import "../styles/main.scss";
   import { onMount } from "svelte";
   import ExifReader from "exifreader";
   import { paths } from "$lib/index";
@@ -6,10 +7,24 @@
   import { writable } from 'svelte/store';
   import LazyImage from './LazyImage.svelte';
   import catGif from '../assets/images/design/cat.gif';
-  import { disableScrollHandling } from "$app/navigation";
+    import { disableScrollHandling } from "$app/navigation";
 
-  // Create a writable store to hold the loaded images
-  let galleryStore = writable<Image[]>(initialData.map(image => ({ ...image, id: image.filename })));
+
+
+    const imageModules = import.meta.glob(
+		'/assets/images/gallery/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}',
+		{
+      // lazy: true,
+			eager: true,
+			query: {
+				enhanced: true
+			}
+		}
+  )
+
+  console.log(imageModules);
+
+  let galleryStore = writable<Image[]>(initialData.map(image => ({...image, id: image.filename})));
   let images: Image[] = [];
   let loadedImages: Image[] = [];
   let currentLoadingIndex = 0;
@@ -17,30 +32,15 @@
   let currentLoadingImage: Image | null = null;
 
   onMount(() => {
+    
+
     const unsubscribe = galleryStore.subscribe(async (data) => {
-      images = data as Image[];
+      images = data;
       loadedImages = [];
       currentLoadingIndex = 0;
       isLoading = true;
       await loadNextImage();
 
-
-
-  const imageModules = import.meta.glob(
-    `/assets/images/gallery/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}`,
-    {
-      eager: true,
-      query: {
-        enhanced: true
-      }
-    }
-  );
-  
-
-  for (const path in imageModules) {
-    const imageSrc = imageModules[path]; // This will be the URL to the image
-    console.log(`Image path: ${path}, Image source: ${imageSrc}`);
-}
 
     });
 
@@ -51,11 +51,8 @@
     if (currentLoadingIndex < images.length) {
       currentLoadingImage = images[currentLoadingIndex];
       const loadedImage = await loadImage(currentLoadingImage);
-
       if (loadedImage) {
         loadedImages = [...loadedImages, loadedImage];
-        // const test = await import(`/assets/images/gallery/${images.filename}`);
-        // console.log(test);
       }
       currentLoadingIndex++;
       await loadNextImage();
@@ -66,6 +63,7 @@
   }
 
   async function loadImage(image: Image): Promise<Image | null> {
+    // Update the image source to point to the public folder
     const imgSrc = `${paths.gallery}${image.filename}`;
     
     try {
@@ -107,7 +105,10 @@
     loaded?: boolean;
     rotateAngle?: number;
   }
+
+
 </script>
+
 
 <dialog>
   asdaaaaaaaaaaasdasd
@@ -115,8 +116,8 @@
 
 <div class="grid">
   {#each loadedImages as image}
-    <div class="grid-item">
-      <figure class="card" id="card" data-id={image.filename} style="--rotate-angle: {image.rotateAngle}deg;">
+    <div class="grid-item" >
+      <figure class="card" id="card"  data-id={image.filename}  style="--rotate-angle: {image.rotateAngle}deg;">
         <div class="image-container">
           <LazyImage
             filename={`${image.filename}` || catGif}
@@ -215,17 +216,34 @@
     max-width: 100%;
     height: 100%;
     box-sizing: border-box;
-    object-fit: cover;
+    object-fit:cover;
+    ;
   }
   .description {
     max-height: 4rem;
     display: -webkit-box;
+    // line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     max-width: 46ch;
     text-overflow: ellipsis;
     overflow: hidden;
   }
+  // .loading-placeholder {
+  //   width: 200px;
+  //   height: 200px;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // opacity: 0.1;
+  //   background-color: #f0f0f0;
+  // }
+
+  // .loading-placeholder img {
+  //   width: 50px;
+  //   height: 50px;
+  // }
+
   .card, .loading-card {
     --rotate-angle: 0deg;
     transform: scale(0.8) rotate(var(--rotate-angle));
@@ -254,13 +272,26 @@
     overflow: hidden;
   }
 
+
+  // .placeholder-image,
+  // .developing-image {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   object-fit: cover;
+  //   object-position: center;
+  // }
+
   .placeholder-image {
     filter: blur(10px);
     opacity: 0.5;
   }
 
+ 
   .developing-image {
-    filter: grayscale(100%) sepia(20%);
+    filter:grayscale(100%) sepia(20%);
   }
 
   figcaption {
@@ -283,6 +314,16 @@
     text-overflow: ellipsis;
   }
 
+  .description {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .date-taken, .location {
     font-size: 0.7rem;
     color: #666;
@@ -290,5 +331,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
 
 </style>

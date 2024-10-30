@@ -7,8 +7,12 @@ export default defineConfig({
 	server: {
 		fs: {
 		  allow: [
-			'/mnt/Files/Dropbox/svelte/pitikcats/public/assets/images', // Add your images directory
-			// You can add other directories if needed
+			'/mnt/Files/Dropbox/svelte/pitikcats/public/assets/images/design',
+			'/mnt/Files/Dropbox/svelte/pitikcats/public/assets/images/gallery',
+
+			'/mnt/Files/Dropbox/svelte/pitikcats/src/assets/images/design',
+			'/mnt/Files/Dropbox/svelte/pitikcats/src/assets/images/gallery',
+				
 		  ]
 		}
 	  },
