@@ -5,6 +5,8 @@
 
   export let filename: string;
   export let alt: string;
+  // export let rotationAngle;
+  // export let flipImage;
 
 // /src/assets/styles/
   let loaded = false;
@@ -12,14 +14,14 @@
 
   
   
-  onMount(async () => {
+  // onMount(async () => {
     
-    // const imageModule = await import(`${src}`);
-    // if (imgElement) {
-    //   imgElement.src = imageModule.default;
-    //   console.log(imgElement);
-    // }
-  });
+  //   // const imageModule = await import(`${src}`);
+  //   // if (imgElement) {
+  //   //   imgElement.src = imageModule.default;
+  //   //   console.log(imgElement);
+  //   // }
+  // });
 
   function onLoad() {
     loaded = true;
@@ -29,11 +31,11 @@
 
 <style>
   img {
+  background-color: hsla(0, 0%, 0%, 0.400);
     width: 100%;
     height: 100%;
-    margin: 10px;
     opacity: 0.5;
-    object-fit: cover;
+    object-fit:cover;
     filter: grayscale(20%) sepia(100%);
     transition: opacity 1s ease, filter 5s ease;
   }
@@ -48,7 +50,6 @@
   alt={alt}
   class:loaded={loaded}
   on:load={onLoad}
-  
-
-/>
+  />
+  <!-- style="transform: rotate({rotationAngle}deg) scaleX({flipImage ? '-1' : '1'})" -->
 

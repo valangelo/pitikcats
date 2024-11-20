@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import ExifReader from "exifreader";
   import { paths } from "$lib/index";
-  import { initialData } from "$lib/imagegallerydata";
+  // import { initialData } from "$lib/imagegallerydata";
   import { writable } from 'svelte/store';
   import LazyImage from './LazyImage.svelte';
   import catGif from '../assets/images/design/cat.gif';
@@ -223,7 +223,8 @@
     max-height: 4rem;
     display: -webkit-box;
     // line-clamp: 3;
-    -webkit-line-clamp: 3;
+    // -webkit-line-clamp: 3;
+    
     -webkit-box-orient: vertical;
     max-width: 46ch;
     text-overflow: ellipsis;
@@ -284,10 +285,10 @@
   //   object-position: center;
   // }
 
-  .placeholder-image {
-    filter: blur(10px);
-    opacity: 0.5;
-  }
+  // .placeholder-image {
+  //   filter: blur(10px);
+  //   opacity: 0.5;
+  // }
 
  
   .developing-image {
@@ -318,8 +319,8 @@
     font-size: 0.8rem;
     margin-bottom: 5px;
     display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
+    // line-clamp: 2;
+    // -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

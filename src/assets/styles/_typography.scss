@@ -1,0 +1,41 @@
+/* Define the Variable Font */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/src/assets/fonts/Caveat/Caveat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 700; /* Range for variable font */
+    font-style: normal;
+}
+
+/* Define Static Font Fallbacks */
+
+/* Regular */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/src/assets/fonts/Caveat/static/Caveat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Medium */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/src/assets/fonts/Caveat/static/Caveat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* SemiBold */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/src/assets/fonts/Caveat/static/Caveat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/src/assets/fonts/Caveat/static/Caveat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}

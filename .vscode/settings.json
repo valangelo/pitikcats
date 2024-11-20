@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "node_modules": true,
+        "src/lib/pitikGallery copy.svelte": true,
+        "src/assets/components/PitikcatsGallery.svelte": true
+    }
+}
